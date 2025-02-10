@@ -1,0 +1,101 @@
+Here’s a GitHub README with step-by-step installation instructions for setting up DeepSeek on Mac using Docker, Ollama, and Open WebUI.
+
+🚀 Install DeepSeek on Mac
+
+This guide will help you set up DeepSeek on macOS using Docker, Ollama, and Open WebUI. Follow these steps to get your AI model running locally.
+
+🛠️ Prerequisites
+
+Before you start, ensure you have:
+✅ macOS with Apple Silicon (M1/M2) or Intel
+✅ Internet connection
+✅ Terminal access
+
+📌 Installation Steps
+
+1️⃣ Install Docker (⏳ ~4 mins)
+
+Docker is required to run containerized applications.
+
+🔗 Download & Install Docker
+
+After installation, verify it’s running:
+
+docker --version
+
+2️⃣ Install Ollama (⏳ ~5 mins)
+
+Ollama is used to manage and run DeepSeek models locally.
+
+🔗 Download & Install Ollama
+
+After installation, check if Ollama is working:
+
+ollama --help
+
+3️⃣ Install & Set Up Open WebUI (⏳ ~6 mins)
+
+Open WebUI is a browser-based interface for interacting with AI models.
+
+Clone & Run Open WebUI
+
+git clone https://github.com/open-webui/open-webui.git
+cd open-webui
+docker compose up -d
+
+🔗 More details on Open WebUI setup
+
+Once running, Open WebUI will be available at:
+👉 http://localhost:3000
+
+4️⃣ Install the DeepSeek Model (⏳ ~6 mins)
+
+DeepSeek is a powerful AI model that can handle text generation, summarization, and more.
+
+Install DeepSeek 1.5B model
+
+ollama pull deepseek-r1:1.5b
+
+Verify the installation
+
+ollama list
+
+Expected output should include:
+
+deepseek-r1:1.5b
+
+🎯 Using DeepSeek via API
+
+Once installed, you can access DeepSeek via API:
+
+Test DeepSeek in Terminal
+
+ollama run deepseek-r1 "Summarize this: Artificial Intelligence is transforming industries."
+
+Use DeepSeek in Python
+
+Create a simple Python script (deepseek_test.py):
+
+import requests
+
+url = "http://localhost:11434/api/generate"
+payload = {
+    "model": "deepseek-r1:1.5b",
+    "prompt": "Summarize this: Artificial Intelligence is transforming industries.",
+    "stream": False
+}
+response = requests.post(url, json=payload)
+print(response.json())
+
+Run the script:
+
+python3 deepseek_test.py
+
+🚀 Next Steps
+
+✅ Experiment with DeepSeek for summarization, chat, and text generation.
+✅ Integrate with Open WebUI to chat with DeepSeek in the browser.
+✅ Build API-based applications using Python & FastAPI.
+
+🔹 Need Help? Feel free to open an issue in this repository.
+Happy coding! 🎯🚀
